@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<library uuid="36C6558F-C5D2-4C1E-8E7F-3DE156D0F83C" version="1">
+    <items>
+        <book asin="0000000000" uuid="702F75C0-7C6C-4537-8993-8ACA086F09C0">
+            <recommendations>
+                <book asin="1111111111" uuid="702F75C0-7C6C-4537-8993-8ACA086F09C1"></book>
+                <book asin="2222222222" uuid="702F75C0-7C6C-4537-8993-8ACA086F09C2"></book>
+                <book asin="3333333333" uuid="702F75C0-7C6C-4537-8993-8ACA086F09C3"></book>
+            </recommendations>
+        </book>
+
+        <book asin="4444444444" uuid="702F75C0-7C6C-4537-8993-8ACA086F09C4"></book>
+        <book asin="5555555555" uuid="702F75C0-7C6C-4537-8993-8ACA086F09C5"></book>
+
+        <movie asin="6666666666" uuid="702F75C0-7C6C-4537-8993-8ACA086F09C6">
+            <description>some movie</description>
+        </movie>
+
+        <game asin="7777777777" uuid="702F75C0-7C6C-4537-8993-8ACA086F09C7">
+            <description>some game</description>
+        </game>
+
+        <music asin="8888888888" uuid="702F75C0-7C6C-4537-8993-8ACA086F09C8">
+            <description>some album</description>
+        </music>
+    </items>
+
+    <shelves>
+        <shelf name="Favorites" uuid="BB3AE871-8233-40CD-9BA4-E6CAE8C8CC1C">
+            <linkto uuid="702F75C0-7C6C-4537-8993-8ACA086F09C0"/>
+            <linkto uuid="702F75C0-7C6C-4537-8993-8ACA086F09C8"/>
+        </shelf>
+        
+        <shelf name="To read" uuid="BB3AE871-8233-40CD-9BA4-E6CAE8C8CC1D">
+            <linkto uuid="702F75C0-7C6C-4537-8993-8ACA086F09C4"/>
+            <linkto uuid="702F75C0-7C6C-4537-8993-8ACA086F09C5"/>
+        </shelf>
+    </shelves>
+</library>
