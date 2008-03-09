@@ -56,6 +56,6 @@ $p2->setLicense("BSD License", "http://www.opensource.org/licenses/bsd-license.p
 $p2->setPhpDep("5.2.0");
 $p2->setPearinstallerDep("1.6.2");
 
-$p2->addMaintainer("lead", "martin", "Martin Jansen", "mj@php.net");
+$p2->addMaintainer("lead", "mj", "Martin Jansen", "mj@php.net");
 
 $p2->writePackageFile();

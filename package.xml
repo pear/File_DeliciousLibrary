@@ -9,12 +9,12 @@
  <description>This package provides a convenient interface to extract information out of the XML based library database being used by Delicious Library. This makes it possible to e.g. expor the items from the library to a website.</description>
  <lead>
   <name>Martin Jansen</name>
-  <user>martin</user>
+  <user>mj</user>
   <email>mj@php.net</email>
   <active>yes</active>
  </lead>
  <date>2008-03-09</date>
- <time>12:20:36</time>
+ <time>13:35:41</time>
  <version>
   <release>0.1.0</release>
   <api>0.1.0</api>
