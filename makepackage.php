@@ -46,11 +46,11 @@ $p2->setPackage("File_DeliciousLibrary");
 $p2->setChannel("pear.php.net");
 $p2->setSummary("Parser for the library database of the Delicious Library software.");
 $p2->setDescription("This package provides a convenient interface to extract information out of the XML based library database being used by Delicious Library. This makes it possible to e.g. expor the items from the library to a website.");
-$p2->setReleaseVersion("0.1.0");
+$p2->setReleaseVersion("0.1.1");
 $p2->setReleaseStability("alpha");
 $p2->setAPIVersion("0.1.0");
 $p2->setAPIStability("alpha");
-$p2->setNotes("Initial release through PEAR.");
+$p2->setNotes("* Fixed bug 14818: Unit test failures in CVS. (Patch provided by Daniel O'Connor.)");
 $p2->setLicense("BSD License", "http://www.opensource.org/licenses/bsd-license.php");
 
 $p2->setPhpDep("5.2.0");

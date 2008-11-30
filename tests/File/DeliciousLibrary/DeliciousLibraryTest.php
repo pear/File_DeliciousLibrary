@@ -53,6 +53,8 @@ require_once "File/DeliciousLibrary.php";
 class File_DeliciousLibraryTest extends PHPUnit_Framework_TestCase
 {
 
+    protected $parser;
+
     /**
      * Runs the test methods of this class.
      */
@@ -61,6 +63,10 @@ class File_DeliciousLibraryTest extends PHPUnit_Framework_TestCase
 
         $suite  = new PHPUnit_Framework_TestSuite("File_DeliciousLibraryTest");
         $result = PHPUnit_TextUI_TestRunner::run($suite);
+    }
+
+    public function setUp() {
+        $this->parser = new File_DeliciousLibrary(dirname(__FILE__) . "/library.xml");
     }
 
     public function testFileNotFoundException() {
@@ -77,12 +83,12 @@ class File_DeliciousLibraryTest extends PHPUnit_Framework_TestCase
     }
 
     public function testNonWellformedXML() {
-        $parser = new File_DeliciousLibrary("File/DeliciousLibrary/not-wellformed.xml");
+        $parser = new File_DeliciousLibrary(dirname(__FILE__) . "/not-wellformed.xml");
         try {
             $parser->parse();   
         } catch (Exception $e) {
             self::assertTrue($e instanceof File_DeliciousLibrary_Exception);
-            self::assertEquals("Unable to parse input file File/DeliciousLibrary/not-wellformed.xml", $e->getMessage());
+            self::assertEquals("Unable to parse input file " . dirname(__FILE__) . "/not-wellformed.xml", $e->getMessage());
             return;
         }
 
@@ -90,16 +96,15 @@ class File_DeliciousLibraryTest extends PHPUnit_Framework_TestCase
     }
     
     public function testOnlyBooks() {
-        $parser1 = new File_DeliciousLibrary("File/DeliciousLibrary/library.xml");
-        $parser1->parse();
+        $this->parser->parse();
 
-        $set1  = $parser1->getBooks();
+        $set1  = $this->parser->getBooks();
         self::assertTrue(is_array($set1));
         self::assertEquals(3, count($set1));
 
         /* The following has to result in the same numbers as before. */
         
-        $parser2 = new File_DeliciousLibrary("File/DeliciousLibrary/library.xml");
+        $parser2 = new File_DeliciousLibrary(dirname(__FILE__) . "/library.xml");
         $parser2->include = File_DeliciousLibrary::INCLUDE_BOOKS;
         $parser2->parse();
 
@@ -108,16 +113,15 @@ class File_DeliciousLibraryTest extends PHPUnit_Framework_TestCase
     }
 
     public function testOnlyMovies() {
-        $parser1 = new File_DeliciousLibrary("File/DeliciousLibrary/library.xml");
-        $parser1->parse();
+        $this->parser->parse();
 
-        $set1  = $parser1->getMovies();
+        $set1  = $this->parser->getMovies();
         self::assertTrue(is_array($set1));
         self::assertEquals(1, count($set1));
 
         /* The following has to result in the same numbers as before. */
         
-        $parser2 = new File_DeliciousLibrary("File/DeliciousLibrary/library.xml");
+        $parser2 = new File_DeliciousLibrary(dirname(__FILE__) . "/library.xml");
         $parser2->include = File_DeliciousLibrary::INCLUDE_MOVIES;
         $parser2->parse();
 
@@ -126,16 +130,16 @@ class File_DeliciousLibraryTest extends PHPUnit_Framework_TestCase
     }
 
     public function testOnlyMusic() {
-        $parser1 = new File_DeliciousLibrary("File/DeliciousLibrary/library.xml");
-        $parser1->parse();
+        $this->parser->parse();
 
-        $set1  = $parser1->getMusic();
+        $set1  = $this->parser->getMusic();
+
         self::assertTrue(is_array($set1));
         self::assertEquals(1, count($set1));
 
         /* The following has to result in the same numbers as before. */
         
-        $parser2 = new File_DeliciousLibrary("File/DeliciousLibrary/library.xml");
+        $parser2 = new File_DeliciousLibrary(dirname(__FILE__) . "/library.xml");
         $parser2->include = File_DeliciousLibrary::INCLUDE_MUSIC;
         $parser2->parse();
 
@@ -144,16 +148,15 @@ class File_DeliciousLibraryTest extends PHPUnit_Framework_TestCase
     }
 
     public function testOnlyGames() {
-        $parser1 = new File_DeliciousLibrary("File/DeliciousLibrary/library.xml");
-        $parser1->parse();
+        $this->parser->parse();
 
-        $set1  = $parser1->getGames();
+        $set1  = $this->parser->getGames();
         self::assertTrue(is_array($set1));
         self::assertEquals(1, count($set1));
 
         /* The following has to result in the same numbers as before. */
         
-        $parser2 = new File_DeliciousLibrary("File/DeliciousLibrary/library.xml");
+        $parser2 = new File_DeliciousLibrary(dirname(__FILE__) . "/library.xml");
         $parser2->include = File_DeliciousLibrary::INCLUDE_GAMES;
         $parser2->parse();
 
@@ -162,10 +165,10 @@ class File_DeliciousLibraryTest extends PHPUnit_Framework_TestCase
     }
 
     public function testShelves() {
-        $parser = new File_DeliciousLibrary("File/DeliciousLibrary/library.xml");
-        $parser->parse();
+        $this->parser->parse();
 
-        $shelves = $parser->shelves;
+
+        $shelves = $this->parser->shelves;
         self::assertEquals(2, count($shelves));
 
         list($first, $second) = each($shelves);
@@ -174,26 +177,23 @@ class File_DeliciousLibraryTest extends PHPUnit_Framework_TestCase
     }
 
     public function testCoverLocations() {
-        $parser = new File_DeliciousLibrary("File/DeliciousLibrary/library.xml");
-        $parser->parse();
-
-        foreach ($parser->items as $item) {
-            self::assertEquals("File/DeliciousLibrary/Images/Small Covers/" . $item->uuid, $item->getCoverLocation());
-            self::assertEquals("File/DeliciousLibrary/Images/Small Covers/" . $item->uuid, $item->getCoverLocation(File_DeliciousLibrary_Item::COVER_SMALL));
-            self::assertEquals("File/DeliciousLibrary/Images/Medium Covers/" . $item->uuid, $item->getCoverLocation(File_DeliciousLibrary_Item::COVER_MEDIUM));
-            self::assertEquals("File/DeliciousLibrary/Images/Plain Covers/" . $item->uuid, $item->getCoverLocation(File_DeliciousLibrary_Item::COVER_PLAIN));
-            self::assertEquals("File/DeliciousLibrary/Images/Large Covers/" . $item->uuid, $item->getCoverLocation(File_DeliciousLibrary_Item::COVER_LARGE));
+        $path = dirname(__FILE__);
+        foreach ($this->parser->items as $item) {
+            self::assertEquals($path . "/Images/Small Covers/" . $item->uuid, $item->getCoverLocation());
+            self::assertEquals($path . "/Images/Small Covers/" . $item->uuid, $item->getCoverLocation(File_DeliciousLibrary_Item::COVER_SMALL));
+            self::assertEquals($path . "/Images/Medium Covers/" . $item->uuid, $item->getCoverLocation(File_DeliciousLibrary_Item::COVER_MEDIUM));
+            self::assertEquals($path . "/Images/Plain Covers/" . $item->uuid, $item->getCoverLocation(File_DeliciousLibrary_Item::COVER_PLAIN));
+            self::assertEquals($path . "/Images/Large Covers/" . $item->uuid, $item->getCoverLocation(File_DeliciousLibrary_Item::COVER_LARGE));
         }
     }
     
     public function testShelfContains() {
-        $parser = new File_DeliciousLibrary("File/DeliciousLibrary/library.xml");
-        $parser->parse();
-
-        $item1 = $parser->items['702F75C0-7C6C-4537-8993-8ACA086F09C0'];
-        $item2 = $parser->items['702F75C0-7C6C-4537-8993-8ACA086F09C4'];
+        $this->parser->parse();
         
-        self::assertTrue($parser->shelves['Favorites']->contains($item1));
-        self::assertFalse($parser->shelves['Favorites']->contains($item2));
+        $item1 = $this->parser->items['702F75C0-7C6C-4537-8993-8ACA086F09C0'];
+        $item2 = $this->parser->items['702F75C0-7C6C-4537-8993-8ACA086F09C4'];
+
+        self::assertTrue($this->parser->shelves['Favorites']->contains($item1));
+        self::assertFalse($this->parser->shelves['Favorites']->contains($item2));
     }
 }
