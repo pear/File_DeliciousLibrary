@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.7.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
-    http://pear.php.net/dtd/tasks-1.0.xsd
-    http://pear.php.net/dtd/package-2.0
-    http://pear.php.net/dtd/package-2.0.xsd">
+<package packagerversion="1.9.0" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0     http://pear.php.net/dtd/tasks-1.0.xsd     http://pear.php.net/dtd/package-2.0     http://pear.php.net/dtd/package-2.0.xsd">
  <name>File_DeliciousLibrary</name>
  <channel>pear.php.net</channel>
  <summary>Parser for the library database of the Delicious Library software.</summary>
@@ -13,8 +10,8 @@
   <email>mj@php.net</email>
   <active>yes</active>
  </lead>
- <date>2008-11-30</date>
- <time>15:20:59</time>
+ <date>2010-02-14</date>
+ <time>15:34:34</time>
  <version>
   <release>0.1.1</release>
   <api>0.1.0</api>
@@ -24,25 +21,21 @@
   <api>alpha</api>
  </stability>
  <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD License</license>
- <notes>* Fixed bug 14818: Unit test failures in CVS. (Patch provided by Daniel O&apos;Connor.)</notes>
+ <notes>
+* Fixed bug 14818: Unit test failures in CVS. (Patch provided by Daniel O&apos;Connor.)
+ </notes>
  <contents>
-  <dir baseinstalldir="File" name="/">
-   <dir name="DeliciousLibrary">
-    <file name="Item.php" role="php" />
-    <file name="Shelf.php" role="php" />
-   </dir> <!-- /DeliciousLibrary -->
-   <dir name="tests">
-    <dir name="File">
-     <dir name="DeliciousLibrary">
-      <file name="DeliciousLibraryTest.php" role="test" />
-      <file name="library.xml" role="test" />
-      <file name="not-wellformed.xml" role="test" />
-     </dir> <!-- /tests/File/DeliciousLibrary -->
-    </dir> <!-- /tests/File -->
-    <file name="AllTests.php" role="test" />
-   </dir> <!-- /tests -->
-   <file name="DeliciousLibrary.php" role="php" />
-  </dir> <!-- / -->
+  <dir baseinstalldir="/" name="/">
+   <file baseinstalldir="/" md5sum="5660e901e7850a0e87c0f09ca5a76860" name="File/DeliciousLibrary.php" role="php" />
+   <file baseinstalldir="/" md5sum="622a2d7a6b14e8f833d8190fcc540236" name="File/DeliciousLibrary/Item.php" role="php" />
+   <file baseinstalldir="/" md5sum="8fb5d8e3c30b3ba04efdac7b23bd485d" name="File/DeliciousLibrary/Shelf.php" role="php" />
+   <file baseinstalldir="/" md5sum="e87136d0fc56954ee5363a26f02daa11" name="tests/AllTests.php" role="test" />
+   <file baseinstalldir="/" md5sum="e0d0774e912a68ed8a6f067c81fc1013" name="tests/File/DeliciousLibrary/DeliciousLibraryTest.php" role="test" />
+   <file baseinstalldir="/" md5sum="c6d2d65916755a545ba7a7fcb8f98569" name="tests/File/DeliciousLibrary/library.xml" role="test" />
+   <file baseinstalldir="/" md5sum="eba97d0b051b98bc368b4db04e00e684" name="tests/File/DeliciousLibrary/not-wellformed.xml" role="test" />
+   <file baseinstalldir="/" md5sum="b39f8a775e103f8144f4d02292e2816c" name="makepackage.php" role="php" />
+   <file baseinstalldir="/" md5sum="2d5ef5cb13bac2c2fd6186e81e50a2d4" name="runtests.sh" role="data" />
+  </dir>
  </contents>
  <dependencies>
   <required>
@@ -67,7 +60,9 @@
    </stability>
    <date>2007-12-27</date>
    <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD License</license>
-   <notes>Initial release</notes>
+   <notes>
+Initial release
+   </notes>
   </release>
   <release>
    <version>
@@ -80,7 +75,9 @@
    </stability>
    <date>2007-12-27</date>
    <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD License</license>
-   <notes>Initial release</notes>
+   <notes>
+Initial release
+   </notes>
   </release>
   <release>
    <version>
@@ -93,7 +90,9 @@
    </stability>
    <date>2007-12-28</date>
    <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD License</license>
-   <notes>The array of shelves uses their names instead of the unique identifier as keys.</notes>
+   <notes>
+The array of shelves uses their names instead of the unique identifier as keys.
+   </notes>
   </release>
   <release>
    <version>
@@ -106,7 +105,9 @@
    </stability>
    <date>2007-12-28</date>
    <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD License</license>
-   <notes>Added File_DeliciousLibrary_Item::getCoverLocation().</notes>
+   <notes>
+Added File_DeliciousLibrary_Item::getCoverLocation().
+   </notes>
   </release>
   <release>
    <version>
@@ -119,7 +120,9 @@
    </stability>
    <date>2007-12-29</date>
    <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD License</license>
-   <notes>Added File_DeliciousLibrary_Shelf::contains().</notes>
+   <notes>
+Added File_DeliciousLibrary_Shelf::contains().
+   </notes>
   </release>
   <release>
    <version>
@@ -132,7 +135,9 @@
    </stability>
    <date>2008-03-09</date>
    <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD License</license>
-   <notes>Initial release through PEAR.</notes>
+   <notes>
+Initial release through PEAR.
+   </notes>
   </release>
   <release>
    <version>
@@ -143,9 +148,11 @@
     <release>alpha</release>
     <api>alpha</api>
    </stability>
-   <date>2008-11-30</date>
+   <date>2010-02-14</date>
    <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD License</license>
-   <notes>* Fixed bug 14818: Unit test failures in CVS. (Patch provided by Daniel O&apos;Connor.)</notes>
+   <notes>
+* Fixed bug 14818: Unit test failures in CVS. (Patch provided by Daniel O&apos;Connor.)
+   </notes>
   </release>
  </changelog>
 </package>
